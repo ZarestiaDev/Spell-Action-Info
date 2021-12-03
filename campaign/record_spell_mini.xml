@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="spell_item_mini_header" merge="join">
+		<margins control="0,0,0,2" />
+		<script>
+			-- Zarestia adding onInit function
+			function onInit()
+				setActionText();
+			end
+			
+			-- Zarestia adding setActionText function
+			function setActionText()
+				local sAction = DB.getValue(getDatabaseNode(), "castingtime", "");
+				
+				sAction = sAction:gsub("1 standard action", "Standard");
+				sAction = sAction:gsub("1 swift action", "Swift");
+				sAction = sAction:gsub("1 immediate action", "Immediate");
+				sAction = sAction:gsub("1 full%-round action" , "Full-Round");
+				sAction = sAction:gsub("1 move action" , "Move");
+				sAction = sAction:gsub("1 free action" , "Free");
+				
+				action_text_label.setValue(sAction);
+			end
+			
+			function activatePower()
+				parentcontrol.window.activatePower();
+			end
+			
+			function usePower()
+				parentcontrol.window.usePower();
+			end
+			
+			function onSpellCounterUpdate()
+				parentcontrol.window.windowlist.window.onSpellCounterUpdate();
+			end
+		</script>
+		<sheetdata>
+			
+			<windowlist name="actions" merge="replace">
+				<anchored>
+					<top offset="2" />
+					<left parent="components_text_label" anchor="right" offset="10" />
+					<right />
+				</anchored>
+				<datasource>.actions</datasource>
+				<class>spell_action_mini</class>
+				<noscroll />
+				<readonly />
+				<columns width="25" fillwidth="true" />
+			</windowlist>
+			
+			<simplestring name="name" merge="replace">
+				<anchored>
+					<top offset="2" />
+					<left parent="hanchor" anchor="right" relation="relative" offset="5" />
+					<right parent="action_text_label" anchor="left" offset="-10" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<readonly />
+			</simplestring>
+		
+		<!-- Zarestia adding invsible string to update the casting time live -->
+			<string_spell name="invisible_casting_string" source="castingtime" insertbefore="name">
+				<anchored width="50" height="20">
+					<top offset="2" />
+					<left anchor="center" offset="0" />
+				</anchored>
+				<script>
+					function onValueChanged()
+						window.setActionText();
+					end
+				</script>
+				<invisible />
+			</string_spell>
+			
+			<string_spell name="invisible_components_string" source="components" insertbefore="name">
+				<anchored width="50" height="20">
+					<top offset="2" />
+					<right parent="actions" anchor="left" relation="relative" offset="-30" />
+				</anchored>
+				<script>
+					function onValueChanged()
+						window.components_text_label.setComponentsText();
+					end
+				</script>
+				<invisible />
+			</string_spell>
+			
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="action_text_label" insertbefore="actions">
+				<anchored width="70">
+					<top offset="2" />
+					<left anchor="center" offset="0" />
+				</anchored>
+			</label>
+			
+		<!-- Zarestia adding label to display the components -->
+			<label name="components_text_label" insertbefore="actions">
+				<script file="campaign/scripts/visibility_components.lua" />
+				<anchored width="75">
+					<top offset="2" />
+					<left parent="action_text_label" anchor="right" relation="relative" offset="10" />
+				</anchored>
+			</label>
+		</sheetdata>
+	</windowclass>
+</root>

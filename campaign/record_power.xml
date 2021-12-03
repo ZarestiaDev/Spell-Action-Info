@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+	<windowclass name="power_item_header" merge="join">
+		<script>
+			function onInit()
+				-- Zarestia adding function
+				setActionText();
+			end
+			
+			-- Zarestia adding setActionText function
+			function setActionText()
+				local sAction = DB.getValue(getDatabaseNode(), "castingtime", "");
+				
+				sAction = sAction:gsub("1 action", "Action");
+				sAction = sAction:gsub("1 Action", "Action");
+				sAction = sAction:gsub("1 bonus action", "Bonus");
+				if string.find(sAction, "1 reaction") then
+					sAction = "Reaction";
+				end
+				
+				action_text_label.setValue(sAction);
+			end
+		</script>
+		<sheetdata>
+		<!-- Zarestia adding invsible string to update the casting time live -->
+			<string_power name="invisible_casting_string" source="castingtime" insertbefore="group">
+				<anchored width="50" height="20">
+					<top offset="2" />
+					<left parent="name" anchor="right" offset="10" />
+				</anchored>
+				<script>
+					function onValueChanged()
+						window.setActionText();
+					end
+				</script>
+				<invisible />
+			</string_power>
+			
+		<!-- Zarestia adding invsible string to update the components live -->
+			<string_power name="invisible_components_string" source="components" insertbefore="group">
+				<anchored width="50" height="20">
+					<top offset="2" />
+					<left parent="name" anchor="right" />
+				</anchored>
+				<script>
+					function onValueChanged()
+						window.components_text_label.setComponentsText();
+					end
+				</script>
+				<invisible />
+			</string_power>
+			
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="action_text_label" insertbefore="group">
+				<anchored width="70">
+					<top offset="2" />
+					<left parent="name" anchor="right" offset="10" />
+				</anchored>
+			</label>
+			
+		<!-- Zarestia adding label to display the components -->
+			<label name="components_text_label" insertbefore="group">
+				<script file="campaign/scripts/visibility_components.lua" />
+				<anchored width="0">
+					<top offset="2" />
+					<left parent="action_text_label" anchor="right" />
+				</anchored>
+			</label>
+			
+		<!-- Zarestia editing ActionsMini -->
+			<windowlist name="actionsmini">
+				<anchored>
+					<top offset="2" />
+					<left parent="components_text_label" anchor="right" />
+					<right />
+				</anchored>
+			</windowlist>
+			
+		</sheetdata>
+	</windowclass>
+	
+	<!-- Zarestia adding merge for the display change -->
+	<windowclass name="power_item" merge="join">
+		<script file="campaign/scripts/power_item.lua" />
+	</windowclass>
+</root>
