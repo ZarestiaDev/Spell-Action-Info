@@ -10,22 +10,29 @@
 			
 			-- Zarestia adding setActionText function
 			function setActionText()
-				local sAction = DB.getValue(getDatabaseNode(), "castingtime", "");
+				local nodeChar = getDatabaseNode();
+				local sAction = DB.getValue(nodeChar, "castingtime", "");
+				local sRitual = DB.getValue(nodeChar, "ritual")
 				
 				sAction = sAction:gsub("1 action", "Action");
 				sAction = sAction:gsub("1 Action", "Action");
 				sAction = sAction:gsub("1 bonus action", "Bonus");
+
 				if string.find(sAction, "1 reaction") then
 					sAction = "Reaction";
 				end
 				
+				if sRitual == 1 then
+					sAction = "R | " .. sAction;
+				end
+
 				action_text_label.setValue(sAction);
 			end
 		</script>
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
 			<string_power name="invisible_casting_string" source="castingtime" insertbefore="group">
-				<anchored width="50" height="20">
+				<anchored width="85" height="20">
 					<top offset="2" />
 					<left parent="name" anchor="right" offset="10" />
 				</anchored>
@@ -53,7 +60,7 @@
 			
 		<!-- Zarestia adding label to display the casting time -->
 			<label name="action_text_label" insertbefore="group">
-				<anchored width="70">
+				<anchored width="85">
 					<top offset="2" />
 					<left parent="name" anchor="right" offset="10" />
 				</anchored>
