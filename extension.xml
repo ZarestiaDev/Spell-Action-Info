@@ -3,7 +3,7 @@
 <root version="3.3" >
 	<properties>
 		<name>Feature: Spell Action Info</name>
-		<version>3.5</version>
+		<version>3.6</version>
 		<loadorder>50</loadorder>
 		<description>
 			<text>Spell Action Info</text>
@@ -20,7 +20,7 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="3.5E/5E/PFRPG Spell Action Info - v3.5 \rby Zarestia, compatibility contributions by MeAndUnique, 2022\r---" font="emotefont"/>
+	<announcement text="3.5E/5E/PFRPG Spell Action Info - v3.6 \rby Zarestia, compatibility contributions by MeAndUnique, 2022\r---" font="emotefont"/>
 
 	<base>
 		<!-- Campaign -->
