@@ -79,7 +79,7 @@
 			<windowlist name="actionsmini">
 				<anchored>
 					<top offset="2" />
-					<left parent="components_text_label" anchor="right" />
+					<left parent="components_text_label" anchor="right" relation="relative" offset="4" />
 					<right />
 				</anchored>
 			</windowlist>
