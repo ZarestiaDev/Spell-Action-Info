@@ -4,7 +4,7 @@
 	<properties>
 		<name>Feature: Spell Action Info</name>
 		<version>3.6</version>
-		<loadorder>50</loadorder>
+		<loadorder>142</loadorder>
 		<description>
 			<text>Spell Action Info</text>
 			<author>Zarestia</author>
