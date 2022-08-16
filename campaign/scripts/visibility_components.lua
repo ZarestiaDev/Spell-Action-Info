@@ -25,7 +25,7 @@ function setComponentsText()
 	local sComponents = DB.getValue(window.getDatabaseNode(), "components", "");
 	
 	--Exception for e.g. Tome of Battle prerequisites, set all components with digits to empty
-	if string.find(sComponents, "%d") then
+	if sComponents:match("%d") then
 		sComponents = "";
 	end
 	
