@@ -3,7 +3,7 @@
 <root version="3.3" >
 	<properties>
 		<name>Feature: Spell Action Info</name>
-		<version>3.8</version>
+		<version>3.9</version>
 		<loadorder>142</loadorder>
 		<description>
 			<text>Spell Action Info</text>
@@ -20,7 +20,7 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view\n3.5E/PFRPG/5E Spell Action Info - v3.8 \rby Zarestia, compatibility contributions by MeAndUnique, 2022" font="emotefont" icon="sai_icon" />
+	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view\n3.5E/PFRPG/5E Spell Action Info - v3.9 \rby Zarestia, compatibility contributions by MeAndUnique, 2022" font="emotefont" icon="sai_icon" />
 
 	<base>
 		<!-- Campaign -->

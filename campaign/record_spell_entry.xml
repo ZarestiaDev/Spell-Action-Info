@@ -15,14 +15,11 @@
 			
 			-- Zarestia adding setActionText function
 			function setActionText()
-				local sAction = DB.getValue(getDatabaseNode(), "castingtime", "");
+				local sAction = DB.getValue(getDatabaseNode(), "castingtime", ""):lower();
 				
-				sAction = sAction:gsub("1 standard action", "Standard");
-				sAction = sAction:gsub("1 swift action", "Swift");
-				sAction = sAction:gsub("1 immediate action", "Immediate");
-				sAction = sAction:gsub("1 full%-round action" , "Full-Round");
-				sAction = sAction:gsub("1 move action" , "Move");
-				sAction = sAction:gsub("1 free action" , "Free");
+				sAction = sAction:gsub("^%d%s", "");
+				sAction = sAction:gsub("%s?action", "");
+				sAction = StringManager.capitalizeAll(sAction);
 				
 				action_text_label.setValue(sAction);
 			end

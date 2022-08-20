@@ -11,19 +11,23 @@
 			-- Zarestia adding setActionText function
 			function setActionText()
 				local nodeChar = getDatabaseNode();
-				local sAction = DB.getValue(nodeChar, "castingtime", "");
-				local sRitual = DB.getValue(nodeChar, "ritual")
+				local sAction = DB.getValue(nodeChar, "castingtime", ""):lower();
+				local sRitual = DB.getValue(nodeChar, "ritual", 0);
+				local sDuration = DB.getValue(nodeChar, "duration", ""):lower();
 				
 				sAction = sAction:gsub("1 action", "Action");
-				sAction = sAction:gsub("1 Action", "Action");
 				sAction = sAction:gsub("1 bonus action", "Bonus");
 
-				if string.find(sAction, "1 reaction") then
+				if sAction:match("1 reaction") then
 					sAction = "Reaction";
 				end
 				
-				if sRitual == 1 then
-					sAction = "R | " .. sAction;
+				if sRitual == 1 and sDuration:match("concentration") then
+					sAction = "(R, C) " .. sAction;
+				elseif sRitual == 1 then
+					sAction = "(R) " .. sAction;
+				elseif sDuration:match("concentration") then
+					sAction = "(C) " .. sAction;
 				end
 
 				action_text_label.setValue(sAction);
