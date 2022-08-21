@@ -23,17 +23,22 @@ end
 
 function setComponentsText()
 	local sComponents = DB.getValue(window.getDatabaseNode(), "components", "");
-	
-	--Exception for e.g. Tome of Battle prerequisites, set all components with digits to empty
-	if sComponents:match("%d") then
+
+	-- Exception for e.g. Tome of Battle prerequisites, set all components with digits and no gp to empty
+	if sComponents:match("%d") and not sComponents:match("gp") then
 		sComponents = "";
 	end
 	
-	--Getting rid of spaces because of width
+	-- Getting rid of spaces because of width
 	sComponents = sComponents:gsub("%s", "");
-	
-	--Getting rid of paranthesis and text inbewteen for 5e
+
+	-- Capturing and appending the gold cost with an $ because of width reasons
+	if sComponents:match("%d+gp") then
+		sComponents = sComponents .. ",$";
+	end
+
+	-- Getting rid of paranthesis and text inbewteen for 5e
 	sComponents = sComponents:gsub("%b()", "");
-	
+
 	setValue(sComponents);
 end
