@@ -8,7 +8,7 @@ function onInit()
         super.onInit();
     end
 
-    --Check to see if we should automatically parse attack description
+    -- Check to see if we should automatically parse attack description (Compatiblity with CG & CAE)
     local nodeAttack = getDatabaseNode();
     local nParse = DB.getValue(nodeAttack, "parse", 0);
     if nParse ~= 0 then
