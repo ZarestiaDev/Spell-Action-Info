@@ -31,7 +31,7 @@ function onDisplayChanged()
         header.subwindow.additional_info.setVisible(false);
     elseif sDisplayMode == "action" then
         header.subwindow.action_info.setVisible(true);
-        if OptionsManager.isOption("SAIO", "on") then
+        if not OptionsManager.isOption("SAIO", "off") then
             header.subwindow.additional_info.setVisible(true);
         end
     else
