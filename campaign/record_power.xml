@@ -2,68 +2,15 @@
 
 <root>
 	<windowclass name="power_item_header" merge="join">
-		<script>
-			function onInit()
-				-- Zarestia adding function
-				setActionText();
-			end
-			
-			-- Zarestia adding setActionText function
-			function setActionText()
-				local nodeChar = getDatabaseNode();
-				local sAction = DB.getValue(nodeChar, "castingtime", ""):lower();
-				local sRitual = DB.getValue(nodeChar, "ritual", 0);
-				local sDuration = DB.getValue(nodeChar, "duration", ""):lower();
-				
-				sAction = sAction:gsub("1 action", "Action");
-				sAction = sAction:gsub("1 bonus action", "Bonus");
-
-				if sAction:match("1 reaction") then
-					sAction = "Reaction";
-				end
-				
-				if sRitual == 1 and sDuration:match("concentration") then
-					sAction = "(R, C) " .. sAction;
-				elseif sRitual == 1 then
-					sAction = "(R) " .. sAction;
-				elseif sDuration:match("concentration") then
-					sAction = "(C) " .. sAction;
-				end
-
-				action_text_label.setValue(sAction);
-			end
-		</script>
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
-			<string_power name="invisible_casting_string" source="castingtime" insertbefore="group">
-				<anchored width="85" height="20">
-					<top offset="2" />
-					<left parent="name" anchor="right" offset="10" />
-				</anchored>
-				<script>
-					function onValueChanged()
-						window.setActionText();
-					end
-				</script>
-				<invisible />
-			</string_power>
-			
-		<!-- Zarestia adding invsible string to update the components live -->
-			<string_power name="invisible_components_string" source="components" insertbefore="group">
-				<anchored width="50" height="20">
-					<top offset="2" />
-					<left parent="name" anchor="right" />
-				</anchored>
-				<script>
-					function onValueChanged()
-						window.components_text_label.setComponentsText();
-					end
-				</script>
-				<invisible />
-			</string_power>
+			<invis_string_action name="updatecasting" source="castingtime" />
+			<invis_string_additional name="updatecomponents" source="components" />
+			<invis_string_additional name="updaterange" source="range" />
 			
 		<!-- Zarestia adding label to display the casting time -->
-			<label name="action_text_label" insertbefore="group">
+			<label name="action_info" insertbefore="group">
+				<script file="campaign/scripts/show_action_info.lua" />
 				<anchored width="85">
 					<top offset="2" />
 					<left parent="name" anchor="right" offset="10" />
@@ -71,11 +18,11 @@
 			</label>
 			
 		<!-- Zarestia adding label to display the components -->
-			<label name="components_text_label" insertbefore="group">
-				<script file="campaign/scripts/visibility_components.lua" />
+			<label name="additional_info" insertbefore="group">
+				<script file="campaign/scripts/show_additional_info.lua" />
 				<anchored width="0">
 					<top offset="2" />
-					<left parent="action_text_label" anchor="right" />
+					<left parent="action_info" anchor="right" />
 				</anchored>
 			</label>
 			
@@ -83,11 +30,10 @@
 			<windowlist name="actionsmini">
 				<anchored>
 					<top offset="2" />
-					<left parent="components_text_label" anchor="right" relation="relative" offset="4" />
+					<left parent="additional_info" anchor="right" relation="relative" offset="4" />
 					<right />
 				</anchored>
 			</windowlist>
-			
 		</sheetdata>
 	</windowclass>
 	

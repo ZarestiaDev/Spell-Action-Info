@@ -3,7 +3,7 @@
 <root version="3.3" >
 	<properties>
 		<name>Feature: Spell Action Info</name>
-		<version>3.10</version>
+		<version>4.0</version>
 		<loadorder>142</loadorder>
 		<description>
 			<text>Spell Action Info</text>
@@ -18,16 +18,21 @@
 		<ruleset>
 			<name>5E</name>
 		</ruleset>
+		<ruleset>
+			<name>SFRPG</name>
+		</ruleset>
 	</properties>
 
-	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view\n3.5E/PFRPG/5E Spell Action Info - v3.10 \rby Zarestia, compatibility contributions by MeAndUnique, 2022" font="emotefont" icon="sai_icon" />
+	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view \n3.5E/PFRPG/5E Spell Action Info - v4.0 \rby Zarestia, compatibility contributions by MeAndUnique, 2022" font="emotefont" icon="sai_icon" />
 
 	<base>
 		<!-- Campaign -->
-		<includefile ruleset="3.5E|PFRPG" source="campaign/record_spell_entry.xml" />
-		<includefile ruleset="3.5E|PFRPG" source="campaign/record_spell_mini.xml" />
-		<includefile ruleset="3.5E|PFRPG" source="campaign/record_npc.xml" />
+		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_entry.xml" />
+		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_mini.xml" />
+		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_npc.xml" />
 		<includefile ruleset="5E" source="campaign/record_power.xml" />
+
+		<includefile source="campaign/template_char.xml" />
 		
 		<!-- Strings -->
 		<includefile source="strings/sai_strings.xml" />

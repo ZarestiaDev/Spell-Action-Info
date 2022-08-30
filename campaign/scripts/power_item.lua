@@ -27,15 +27,15 @@ function onDisplayChanged()
 
     sDisplayMode = DB.getValue(getDatabaseNode(), "...powerdisplaymode", "");
     if sDisplayMode == "summary" then
-        header.subwindow.action_text_label.setVisible(false);
-        header.subwindow.components_text_label.setVisible(false);
+        header.subwindow.action_info.setVisible(false);
+        header.subwindow.additional_info.setVisible(false);
     elseif sDisplayMode == "action" then
-        header.subwindow.action_text_label.setVisible(true);
-        if OptionsManager.isOption("SAIC", "on") then
-            header.subwindow.components_text_label.setVisible(true);
+        header.subwindow.action_info.setVisible(true);
+        if OptionsManager.isOption("SAIO", "on") then
+            header.subwindow.additional_info.setVisible(true);
         end
     else
-        header.subwindow.action_text_label.setVisible(false);
-        header.subwindow.components_text_label.setVisible(false);
+        header.subwindow.action_info.setVisible(false);
+        header.subwindow.additional_info.setVisible(false);
     end
 end

@@ -19,13 +19,13 @@ function onDisplayChanged()
 	sDisplayMode = DB.getValue(getDatabaseNode(), ".......spelldisplaymode", "");
 	if sDisplayMode == "action" then
 		-- Zarestia adding display change, casting time & components shown in action display
-		header.subwindow.action_text_label.setVisible(true);
-		if OptionsManager.isOption("SAIC", "on") then
-			header.subwindow.components_text_label.setVisible(true);
+		header.subwindow.action_info.setVisible(true);
+		if not OptionsManager.isOption("SAIO", "off") then
+			header.subwindow.additional_info.setVisible(true);
 		end
 	else
 		-- Zarestia adding display change, casting time & components not shown in summary display
-		header.subwindow.action_text_label.setVisible(false);
-		header.subwindow.components_text_label.setVisible(false);
+		header.subwindow.action_info.setVisible(false);
+		header.subwindow.additional_info.setVisible(false);
 	end
 end
