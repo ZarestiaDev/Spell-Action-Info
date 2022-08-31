@@ -7,6 +7,10 @@
 			<invis_string_action name="updatecasting" source="castingtime" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
+
+			<string_spell name="name">
+				<script file="campaign/scripts/name_tooltip.lua" />
+			</string_spell>
 			
 		<!-- Zarestia adding label to display the casting time -->
 			<label name="action_info" insertbefore="group">

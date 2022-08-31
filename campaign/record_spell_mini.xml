@@ -30,6 +30,7 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 				<readonly />
+				<script file="campaign/scripts/name_tooltip.lua" />
 			</simplestring>
 		
 		<!-- Zarestia adding invsible strings to update changes live -->

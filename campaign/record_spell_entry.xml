@@ -33,6 +33,7 @@
 					<left parent="hanchor" anchor="right" relation="relative" offset="5" />
 					<right parent="action_info" anchor="left" offset="-10" />
 				</anchored>
+				<script file="campaign/scripts/name_tooltip.lua" />
 			</string_spell>
 		
 		<!-- Zarestia adding invsible strings to update changes live -->
