@@ -8,7 +8,7 @@ end
 
 function registerOptionsDND()
 	OptionsManager.registerOption2("SAIO",true, "option_header_client", "option_label_SAIO", "option_entry_cycler", 
-		{ labels = "option_val_components|option_val_range", values = "components|range", baselabel = "option_val_off", baseval = "off", default = "off" });
+		{ labels = "option_val_components|option_val_range|option_val_both", values = "components|range|both", baselabel = "option_val_off", baseval = "off", default = "off" });
 end
 
 function registerOptionsSFRPG()

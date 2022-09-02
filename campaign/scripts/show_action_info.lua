@@ -1,4 +1,12 @@
+local RULESET = "";
+
 function onInit()
+	RULESET = User.getRulesetName();
+
+	if RULESET == "SFRPG" then
+		self.setAnchoredWidth(60);
+	end
+
 	setActionInfo();
 end
 
@@ -6,10 +14,10 @@ function setActionInfo()
 	local nodeSpell = window.getDatabaseNode();
 	local sAction = DB.getValue(nodeSpell, "castingtime", ""):lower();
 
-	if User.getRulesetName() == "5E" then
+	if RULESET == "5E" then
 		sAction = setActionInfo5E(nodeSpell, sAction);
 	else
-		sAction = sAction:gsub("%s?action", "");
+		sAction = setActionInfo35E(sAction);
 	end
 
 	if not (sAction:match("minute") or sAction:match("hour")) then
@@ -36,6 +44,12 @@ function setActionInfo5E(nodeSpell, sAction)
 	elseif sDuration:match("concentration") then
 		sAction = "(C) " .. sAction;
 	end
+
+	return sAction;
+end
+
+function setActionInfo35E(sAction)
+	sAction = sAction:gsub("%s?action", "");
 
 	return sAction;
 end

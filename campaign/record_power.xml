@@ -8,10 +8,6 @@
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
 
-			<string_spell name="name">
-				<script file="campaign/scripts/name_tooltip.lua" />
-			</string_spell>
-
 		<!-- Zarestia adding label to display the casting time -->
 			<label name="action_info" insertbefore="group">
 				<script file="campaign/scripts/show_action_info.lua" />
@@ -24,7 +20,7 @@
 		<!-- Zarestia adding label to display the components -->
 			<label name="additional_info" insertbefore="group">
 				<script file="campaign/scripts/show_additional_info.lua" />
-				<anchored width="0">
+				<anchored width="65">
 					<top offset="2" />
 					<left parent="action_info" anchor="right" />
 				</anchored>

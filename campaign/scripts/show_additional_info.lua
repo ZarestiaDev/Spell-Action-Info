@@ -1,4 +1,4 @@
-RULESET = "";
+local RULESET = "";
 
 function onInit()
 	OptionsManager.registerCallback("SAIO", StateChanged);
@@ -21,19 +21,25 @@ function StateChanged()
 	if OptionsManager.isOption("SAIO", "off") then
 		self.setVisible(false);
 	else
-		if RULESET == "5E" then
-			setAnchoredWidth(50);
+		if RULESET == "5E" or RULESET == "SFRPG" then
+			self.setAnchoredWidth(50);
 		else
-			setAnchoredWidth(75);
+			self.setAnchoredWidth(65);
 		end
 		self.setVisible(true);
 	end
 
+	local sAdditionalInfo = "";
+
 	if OptionsManager.isOption("SAIO", "components") then
-		setComponentsInfo();
+		sAdditionalInfo = setComponentsInfo();
 	elseif OptionsManager.isOption("SAIO", "range") then
-		setRangeInfo();
+		sAdditionalInfo = setRangeInfo();
+	elseif OptionsManager.isOption("SAIO", "both") then
+		sAdditionalInfo = setBothInfo();
 	end
+
+	self.setValue(sAdditionalInfo);
 end
 
 function setComponentsInfo()
@@ -55,7 +61,7 @@ function setComponentsInfo()
 	-- Getting rid of paranthesis and text inbewteen for 5e
 	sComponents = sComponents:gsub("%s?%b()", "");
 
-	self.setValue(sComponents);
+	return sComponents;
 end
 
 function setRangeInfo()
@@ -63,17 +69,22 @@ function setRangeInfo()
 	local sRange = DB.getValue(nodeSpell, "range", ""):lower();
 
 	if RULESET == "5E" then
-		sRange = sRange:gsub("%s?%b()", "");
+		sRange = setRangeInfo5E(sRange);
 	else
 		sRange = setRangeInfo35E(nodeSpell, sRange);
 	end
 
 	sRange = sRange:gsub("feet", "ft");
 	sRange = sRange:gsub("%.", "");
-
 	sRange = StringManager.capitalize(sRange);
 
-	self.setValue(sRange);
+	return sRange;
+end
+
+function setRangeInfo5E(sRange)
+	sRange = sRange:gsub("%s?%b()", "");
+
+	return sRange;
 end
 
 function setRangeInfo35E(nodeSpell, sRange)
@@ -98,4 +109,24 @@ function setRangeInfo35E(nodeSpell, sRange)
 	end
 
 	return sRange;
+end
+
+function setBothInfo()
+	if RULESET == "5E" then
+		self.setAnchoredWidth(100);
+	else
+		self.setAnchoredWidth(125);
+	end
+
+	local sRange = setRangeInfo();
+	local sComponents = setComponentsInfo();
+	local sSpacer = " | ";
+
+	if (sRange == "" or sComponents == "") then
+		sSpacer = "";
+	end
+
+	local sBoth = sComponents .. sSpacer .. sRange;
+
+	return sBoth;
 end

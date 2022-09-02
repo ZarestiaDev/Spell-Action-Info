@@ -33,7 +33,6 @@
 					<left parent="hanchor" anchor="right" relation="relative" offset="5" />
 					<right parent="action_info" anchor="left" offset="-10" />
 				</anchored>
-				<script file="campaign/scripts/name_tooltip.lua" />
 			</string_spell>
 		
 		<!-- Zarestia adding invsible strings to update changes live -->
@@ -44,7 +43,7 @@
 		<!-- Zarestia adding label to display the casting time -->
 			<label name="action_info" insertbefore="actionsmini">
 				<script file="campaign/scripts/show_action_info.lua" />
-				<anchored width="70">
+				<anchored width="65">
 					<top offset="2" />
 					<left anchor="center" offset="0" />
 				</anchored>
@@ -53,9 +52,9 @@
 		<!-- Zarestia adding label to display the components -->
 			<label name="additional_info" insertbefore="actionsmini">
 				<script file="campaign/scripts/show_additional_info.lua" />
-				<anchored width="0">
+				<anchored width="65">
 					<top offset="2" />
-					<left parent="action_info" anchor="right" offset="10" />
+					<left parent="action_info" anchor="right" offset="5" />
 				</anchored>
 			</label>
 		</sheetdata>
