@@ -3,12 +3,15 @@
 <root version="3.3" >
 	<properties>
 		<name>Feature: Spell Action Info</name>
-		<version>4.1</version>
+		<version>4.2</version>
 		<loadorder>142</loadorder>
 		<description>
 			<text>Spell Action Info</text>
 			<author>Zarestia</author>
 		</description>
+		<ruleset>
+			<name>2E</name>
+		</ruleset>
 		<ruleset>
 			<name>3.5E</name>
 		</ruleset>
@@ -23,14 +26,14 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view \n3.5E/PFRPG/5E Spell Action Info - v4.1 \rby Zarestia, contributions by MeAndUnique, Rhagelstrom" font="emotefont" icon="sai_icon" />
+	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view \n3.5E/PFRPG/5E Spell Action Info - v4.2 \rby Zarestia, contributions by MeAndUnique, Rhagelstrom" font="emotefont" icon="sai_icon" />
 
 	<base>
 		<!-- Campaign -->
 		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_entry.xml" />
 		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_mini.xml" />
 		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_npc.xml" />
-		<includefile ruleset="5E" source="campaign/record_power.xml" />
+		<includefile ruleset="2E|5E" source="campaign/record_power.xml" />
 
 		<includefile source="campaign/template_char.xml" />
 		
@@ -38,7 +41,7 @@
 		<includefile source="strings/sai_strings.xml" />
 		
 		<!-- High Level Scripts -->
-		<script name="SAI_OptionsInit" file="scripts/sai_data_options_init.lua" />
+		<script name="OptionsSAI" file="scripts/sai_data_options_init.lua" />
 
 		<!-- Icon -->
 		<icon name="sai_icon" file="graphics/sai_icon.png" />

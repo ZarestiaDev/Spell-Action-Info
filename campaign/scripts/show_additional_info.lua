@@ -1,27 +1,22 @@
-local RULESET = "";
-
 function onInit()
 	OptionsManager.registerCallback("SAIO", StateChanged);
 	
-	RULESET = User.getRulesetName();
 	StateChanged();
 
-	local nodeSpellClass = window.getDatabaseNode().getChild(".....");
-	DB.addHandler(DB.getPath(nodeSpellClass, "cl"), "onUpdate", StateChanged);
+	DB.addHandler(DB.getPath(window.getDatabaseNode().getChild("....."), "cl"), "onUpdate", StateChanged);
 end
 
 function onClose()
 	OptionsManager.unregisterCallback("SAIO", StateChanged);
 
-	local nodeSpellClass = window.getDatabaseNode().getChild(".....");
-	DB.addHandler(DB.getPath(nodeSpellClass, "cl"), "onUpdate", StateChanged);
+	DB.addHandler(DB.getPath(window.getDatabaseNode().getChild("....."), "cl"), "onUpdate", StateChanged);
 end
 
 function StateChanged()
 	if OptionsManager.isOption("SAIO", "off") then
 		self.setVisible(false);
 	else
-		if RULESET == "5E" or RULESET == "SFRPG" then
+		if OptionsSAI.RULESET == "5E" or OptionsSAI.RULESET == "SFRPG" or OptionsSAI.RULESET == "2E" then
 			self.setAnchoredWidth(50);
 		else
 			self.setAnchoredWidth(65);
@@ -68,7 +63,7 @@ function setRangeInfo()
 	local nodeSpell = window.getDatabaseNode();
 	local sRange = DB.getValue(nodeSpell, "range", ""):lower();
 
-	if RULESET == "5E" then
+	if OptionsSAI.RULESET == "5E" then
 		sRange = setRangeInfo5E(sRange);
 	else
 		sRange = setRangeInfo35E(nodeSpell, sRange);
@@ -112,7 +107,7 @@ function setRangeInfo35E(nodeSpell, sRange)
 end
 
 function setBothInfo()
-	if RULESET == "5E" then
+	if OptionsSAI.RULESET == "5E" or OptionsSAI.RULESET == "2E" then
 		self.setAnchoredWidth(100);
 	else
 		self.setAnchoredWidth(125);

@@ -1,5 +1,8 @@
+RULESET = "";
+
 function onInit()
-	if User.getRulesetName() == "SFRPG" then
+	RULESET = User.getRulesetName();
+	if RULESET == "SFRPG" then
 		registerOptionsSFRPG();
 	else
 		registerOptionsDND();
