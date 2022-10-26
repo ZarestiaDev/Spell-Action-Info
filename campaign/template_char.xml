@@ -21,6 +21,21 @@
         </stringfield>
     </template>
 
+    <template name="invis_button_action">
+        <buttonfield>
+            <anchored>
+                <top />
+                <left />
+            </anchored>
+            <invisible />
+            <script>
+                function onValueChanged()
+                    window.action_info.setActionInfo();
+                end
+            </script>
+        </buttonfield>
+    </template>
+
     <template name="invis_string_additional">
         <stringfield>
             <anchored>

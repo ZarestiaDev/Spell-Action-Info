@@ -5,6 +5,8 @@
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
 			<invis_string_action name="updatecasting" source="castingtime" />
+			<invis_string_action name="updateduration" source="duration" />
+			<invis_button_action name="updateritual" source="ritual" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
 
