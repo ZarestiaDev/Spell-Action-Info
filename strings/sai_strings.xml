@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <!-- 
-  Please see the license.html file included with this distribution for 
-  attribution and copyright information.
+	Please see the license.html file included with this distribution for 
+	attribution and copyright information.
 -->
 
 <root>
-  <string name="option_header_SAIO">Spell Action Info</string>
+	<string name="option_header_SAIO">Spell Action Info</string>
 	<string name="option_label_SAIO">Show additional Spell Info</string>
-  <string name="option_val_components">Components</string>
-  <string name="option_val_range">Range</string>
-  <string name="option_val_both">Both</string>
+	<string name="option_val_components">Components</string>
+	<string name="option_val_range">Range</string>
+	<string name="option_val_both">Both</string>
 </root>
