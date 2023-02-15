@@ -3,7 +3,7 @@
 <root version="3.3" >
 	<properties>
 		<name>Feature: Spell Action Info</name>
-		<version>4.3</version>
+		<version>5.0</version>
 		<loadorder>142</loadorder>
 		<description>
 			<text>Spell Action Info</text>
@@ -26,15 +26,11 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view \n2E/3.5E/PFRPG/5E/SFRPG Spell Action Info - v4.3 \rby Zarestia, contributions by MeAndUnique, Rhagelstrom" font="emotefont" icon="sai_icon" />
+	<announcement text="https://forge.fantasygrounds.com/shop/items/242/view \n2E/3.5E/PFRPG/5E/SFRPG Spell Action Info - v5.0 \rby Zarestia, contributions by MeAndUnique, Rhagelstrom" font="emotefont" icon="sai_icon" />
 
 	<base>
 		<!-- Campaign -->
-		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_entry.xml" />
-		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_spell_mini.xml" />
-		<includefile ruleset="3.5E|PFRPG|SFRPG" source="campaign/record_npc.xml" />
-		<includefile ruleset="2E|5E" source="campaign/record_power.xml" />
-
+		<includefile source="campaign/record_power.xml" />
 		<includefile source="campaign/template_char.xml" />
 		
 		<!-- Strings -->
@@ -42,6 +38,7 @@
 		
 		<!-- High Level Scripts -->
 		<script name="OptionsSAI" file="scripts/sai_data_options_init.lua" />
+		<script name="PowerManagerSAI" file="scripts/sai_manager_power.lua" />
 
 		<!-- Icon -->
 		<icon name="sai_icon" file="graphics/sai_icon.png" />

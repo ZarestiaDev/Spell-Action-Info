@@ -15,7 +15,7 @@
             <invisible />
             <script>
                 function onValueChanged()
-                    window.action_info.setActionInfo();
+                    window.actioninfo.setActionInfo();
                 end
             </script>
         </stringfield>
@@ -30,7 +30,7 @@
             <invisible />
             <script>
                 function onValueChanged()
-                    window.action_info.setActionInfo();
+                    window.actioninfo.setActionInfo();
                 end
             </script>
         </buttonfield>
@@ -45,7 +45,7 @@
             <invisible />
             <script>
                 function onValueChanged()
-                    window.additional_info.StateChanged();
+                    window.additionalinfo.StateChanged();
                 end
             </script>
         </stringfield>

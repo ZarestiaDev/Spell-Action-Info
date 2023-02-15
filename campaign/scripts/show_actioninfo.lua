@@ -1,11 +1,15 @@
 function onInit()
-	if OptionsSAI.RULESET == "SFRPG" then
-		setAnchoringPFRPG();
-	elseif OptionsSAI.RULESET == "2E" then
-		setAnchoring2E();
-	end
-
+	setActionInfoWidth(OptionsSAI.RULESET);
 	setActionInfo();
+end
+
+function setActionInfoWidth(sRuleset)
+	if sRuleset == "2E" then
+		self.setAnchor("left", "name", "right", "", 40);
+		self.setAnchoredWidth(40);
+	elseif sRuleset == "5E" then
+		self.setAnchoredWidth(85);
+	end
 end
 
 function setActionInfo()
@@ -24,9 +28,8 @@ function setActionInfo()
 			sAction = sAction:gsub("%d+%s", "");
 		end
 	end
-
-	sAction = StringManager.capitalizeAll(sAction);
-	self.setValue(sAction);
+	
+	self.setValue(StringManager.capitalizeAll(sAction));
 end
 
 function setActionInfo5E(nodeSpell, sAction)
@@ -53,13 +56,4 @@ function setActionInfo35E(sAction)
 	sAction = sAction:gsub("%s?action", "");
 
 	return sAction;
-end
-
-function setAnchoring2E()
-	self.setAnchor("left", "name", "right", "", 40);
-	self.setAnchoredWidth(40);
-end
-
-function setAnchoringPFRPG()
-	self.setAnchoredWidth(60);
 end
