@@ -5,74 +5,74 @@
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
 			<invis_string_action name="updatecasting" source="castingtime" />
-			<invis_string_action name="updateduration" source="duration" />
-			<invis_button_action name="updateritual" source="ritual" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
+			<invis_string_action name="updateduration" source="duration" ruleset="5E" />
+			<invis_button_action name="updateritual" source="ritual" ruleset="5E" />
+
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
+				</anchored>
+			</list_poweraction_mini>
 
 		<!-- Zarestia adding label to display the casting time -->
-			<label name="action_info" insertbefore="group">
-				<script file="campaign/scripts/show_action_info.lua" />
-				<anchored width="85">
-					<top offset="2" />
-					<left parent="name" anchor="right" offset="10" />
+			<label name="actioninfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
 				</anchored>
 			</label>
 
 		<!-- Zarestia adding label to display the components -->
-			<label name="additional_info" insertbefore="group">
-				<script file="campaign/scripts/show_additional_info.lua" />
-				<anchored width="65">
-					<top offset="2" />
-					<left parent="action_info" anchor="right" />
+			<label name="additionalinfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="50">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
 				</anchored>
 			</label>
-
-		<!-- Zarestia editing ActionsMini -->
-			<windowlist name="actionsmini">
-				<anchored>
-					<top offset="2" />
-					<left parent="additional_info" anchor="right" relation="relative" offset="4" />
-					<right />
-				</anchored>
-			</windowlist>
 		</sheetdata>
 	</windowclass>
 
-	<!-- Zarestia adding merge for the display change -->
-	<windowclass name="power_item" merge="join">
-		<script file="campaign/scripts/power_item.lua" />
+	<!-- For closed NPC sheets -->
+	<windowclass name="power_item_header_mini" merge="join" ruleset="3.5E|PFRPG|SFRPG">
 		<sheetdata>
-			<genericcontrol name="spacer" insertbefore="activatedetail">
-				<anchored to="rightanchor" height="20" width="20">
+		<!-- Zarestia adding invsible strings to update changes live -->
+			<invis_string_action name="updatecasting" source="castingtime" /> 
+			<invis_string_additional name="updatecomponents" source="components" />
+			<invis_string_additional name="updaterange" source="range" />
+			
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
 					<top />
-					<right anchor="left" relation="relative" offset="0" />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
 				</anchored>
-				<script>
-					function onInit()
-						local node = window.getDatabaseNode();
-						DB.addHandler(DB.getPath(node, "actions"), "onChildAdded", update);
-						DB.addHandler(DB.getPath(node, "actions"), "onChildDeleted", update);
+			</list_poweraction_mini>
 
-						local bShow = (DB.getChildCount(window.getDatabaseNode(), "actions") == 0);
-						setVisible(bShow);
-					end
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="actioninfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
+				</anchored>
+			</label>
 
-					function onClose()
-						local node = window.getDatabaseNode();
-						DB.removeHandler(DB.getPath(node, "actions"), "onChildAdded", update);
-						DB.removeHandler(DB.getPath(node, "actions"), "onChildDeleted", update);
-					end
-
-					function update()
-						if DB.getChildCount(window.getDatabaseNode(), "actions") == 0 then
-							setVisible(true);
-						else
-							setVisible(false);
-						end
-					end
-				</script>
-			</genericcontrol>
+		<!-- Zarestia adding label to display the components -->
+			<label name="additionalinfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
+				</anchored>
+			</label>
 		</sheetdata>
 	</windowclass>
 </root>
