@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root>
-	<windowclass name="power_item_header" merge="join">
+	<!-- 5E needs another 'insertbefore' -->
+	<windowclass name="power_item_header" merge="join" ruleset="5E">
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
 			<invis_string_action name="updatecasting" source="castingtime" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
-			<invis_string_action name="updateduration" source="duration" ruleset="5E" />
-			<invis_button_action name="updateritual" source="ritual" ruleset="5E" />
+			<invis_string_action name="updateduration" source="duration" />
+			<invis_button_action name="updateritual" source="ritual" />
+
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
+				</anchored>
+			</list_poweraction_mini>
+
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="actioninfo" insertbefore="group">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
+				</anchored>
+			</label>
+
+		<!-- Zarestia adding label to display the components -->
+			<label name="additionalinfo" insertbefore="group">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="50">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
+				</anchored>
+			</label>
+		</sheetdata>
+	</windowclass>
+
+	<!-- Powers for other rulesets -->
+	<windowclass name="power_item_header" merge="join" ruleset="3.5E|PFRPG|SFRPG|2E">
+		<sheetdata>
+		<!-- Zarestia adding invsible string to update the casting time live -->
+			<invis_string_action name="updatecasting" source="castingtime" />
+			<invis_string_additional name="updatecomponents" source="components" />
+			<invis_string_additional name="updaterange" source="range" />
 
 		<!-- Zarestia editing ActionsMini -->
 			<list_poweraction_mini name="actionsmini">
