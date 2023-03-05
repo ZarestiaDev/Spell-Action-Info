@@ -79,9 +79,11 @@ function updatePowerDisplaySFRPG(w)
 	end
 
 	local nodeActor = PowerManagerCore.getPowerActorNode(w.getDatabaseNode());
+	local bSpellPower = true;
 	if ActorManager.isPC(nodeActor) then
 		if SpellManager.isAbilityPower(w.getDatabaseNode()) then
 			sDisplayMode = DB.getValue(nodeActor, "abilitydisplaymode", "");
+			bSpellPower = false;
 		else
 			sDisplayMode = DB.getValue(nodeActor, "spelldisplaymode", "");
 		end
@@ -92,15 +94,19 @@ function updatePowerDisplaySFRPG(w)
 	if sDisplayMode == "action" then
 		w.header.subwindow.shortdescription.setVisible(false);
 		w.header.subwindow.actionsmini.setVisible(true);
-		w.header.subwindow.actioninfo.setVisible(true);
-		if not OptionsManager.isOption("SAIO", "off") then
-			w.header.subwindow.additionalinfo.setVisible(true);
+		if bSpellPower then
+			w.header.subwindow.actioninfo.setVisible(true);
+			if not OptionsManager.isOption("SAIO", "off") then
+				w.header.subwindow.additionalinfo.setVisible(true);
+			end
 		end
 	else
 		w.header.subwindow.shortdescription.setVisible(true);
 		w.header.subwindow.actionsmini.setVisible(false);
-		w.header.subwindow.actioninfo.setVisible(false);
-		w.header.subwindow.additionalinfo.setVisible(false);
+		if bSpellPower then
+			w.header.subwindow.actioninfo.setVisible(false);
+			w.header.subwindow.additionalinfo.setVisible(false);
+		end
 	end
 end
 
