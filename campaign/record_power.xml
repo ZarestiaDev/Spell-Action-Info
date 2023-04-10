@@ -47,6 +47,7 @@
 			<invis_string_action name="updatecasting" source="castingtime" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
+			<invis_string_additional name="updateschool" source="school" />
 
 		<!-- Zarestia editing ActionsMini -->
 			<list_poweraction_mini name="actionsmini">
@@ -84,6 +85,7 @@
 			<invis_string_action name="updatecasting" source="castingtime" /> 
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
+			<invis_string_additional name="updateschool" source="school" />
 			
 		<!-- Zarestia editing ActionsMini -->
 			<list_poweraction_mini name="actionsmini">

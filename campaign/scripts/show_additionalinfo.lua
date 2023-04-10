@@ -42,6 +42,9 @@ function StateChanged()
 	elseif OptionsManager.isOption("SAIO", "both") then
 		sAdditionalInfo = setBothInfo(nodeSpell);
 		self.setAnchoredWidth(tRulesetExtendedWidth[OptionsSAI.RULESET]);
+	elseif OptionsManager.isOption("SAIO", "school") then
+		sAdditionalInfo = setSchoolInfo(nodeSpell);
+		self.setAnchoredWidth(tRulesetExtendedWidth[OptionsSAI.RULESET]);
 	end
 
 	self.setValue(sAdditionalInfo);
@@ -122,4 +125,11 @@ function setBothInfo(nodeSpell)
 	local sBoth = sComponents .. sSpacer .. sRange;
 
 	return sBoth;
+end
+
+function setSchoolInfo(nodeSpell)
+	local sSchool = DB.getValue(nodeSpell, "school", "");
+	sSchool = sSchool:gsub("%b()", "");
+	sSchool = sSchool:gsub("%b[]", "");
+	return sSchool;
 end

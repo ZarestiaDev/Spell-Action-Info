@@ -11,4 +11,5 @@
 	<string name="option_val_components">Components</string>
 	<string name="option_val_range">Range</string>
 	<string name="option_val_both">Both</string>
+	<string name="option_val_school">Spell School</string>
 </root>
