@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <!-- 
-  Please see the license.html file included with this distribution for 
-  attribution and copyright information.
+	Please see the license.html file included with this distribution for 
+	attribution and copyright information.
 -->
 
 <root>
-    <template name="invis_string_action">
-        <stringfield>
-            <anchored>
-                <top />
-                <left />
-            </anchored>
-            <invisible />
-            <script>
-                function onValueChanged()
-                    window.action_info.setActionInfo();
-                end
-            </script>
-        </stringfield>
-    </template>
-
-    <template name="invis_button_action">
-        <buttonfield>
-            <anchored>
-                <top />
-                <left />
-            </anchored>
-            <invisible />
-            <script>
-                function onValueChanged()
-                    window.action_info.setActionInfo();
-                end
-            </script>
-        </buttonfield>
-    </template>
-
-    <template name="invis_string_additional">
-        <stringfield>
-            <anchored>
-                <top />
-                <left />
-            </anchored>
-            <invisible />
-            <script>
-                function onValueChanged()
-                    window.additional_info.StateChanged();
-                end
-            </script>
-        </stringfield>
-    </template>
+	<template name="invis_string_action">
+		<stringfield>
+			<anchored>
+				<top />
+				<left />
+			</anchored>
+			<invisible />
+			<script>
+				function onValueChanged()
+				window.actioninfo.setActionInfo();
+				end
+			</script>
+		</stringfield>
+	</template>
+	
+	<template name="invis_button_action">
+		<buttonfield>
+			<anchored>
+				<top />
+				<left />
+			</anchored>
+			<invisible />
+			<script>
+				function onValueChanged()
+				window.actioninfo.setActionInfo();
+				end
+			</script>
+		</buttonfield>
+	</template>
+	
+	<template name="invis_string_additional">
+		<stringfield>
+			<anchored>
+				<top />
+				<left />
+			</anchored>
+			<invisible />
+			<script>
+				function onValueChanged()
+				window.additionalinfo.StateChanged();
+				end
+			</script>
+		</stringfield>
+	</template>
 </root>

@@ -1,41 +1,116 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root>
-	<windowclass name="power_item_header" merge="join">
+	<!-- 5E needs another 'insertbefore' -->
+	<windowclass name="power_item_header" merge="join" ruleset="5E">
 		<sheetdata>
 		<!-- Zarestia adding invsible string to update the casting time live -->
 			<invis_string_action name="updatecasting" source="castingtime" />
-			<invis_string_action name="updateduration" source="duration" />
-			<invis_button_action name="updateritual" source="ritual" />
 			<invis_string_additional name="updatecomponents" source="components" />
 			<invis_string_additional name="updaterange" source="range" />
+			<invis_string_action name="updateduration" source="duration" />
+			<invis_button_action name="updateritual" source="ritual" />
+
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
+				</anchored>
+			</list_poweraction_mini>
 
 		<!-- Zarestia adding label to display the casting time -->
-			<label name="action_info" insertbefore="group">
-				<script file="campaign/scripts/show_action_info.lua" />
-				<anchored width="85">
-					<top offset="2" />
-					<left parent="name" anchor="right" offset="10" />
+			<label name="actioninfo" insertbefore="group">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
 				</anchored>
 			</label>
 
 		<!-- Zarestia adding label to display the components -->
-			<label name="additional_info" insertbefore="group">
-				<script file="campaign/scripts/show_additional_info.lua" />
-				<anchored width="65">
-					<top offset="2" />
-					<left parent="action_info" anchor="right" />
+			<label name="additionalinfo" insertbefore="group">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="50">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
+				</anchored>
+			</label>
+		</sheetdata>
+	</windowclass>
+
+	<!-- Powers for other rulesets -->
+	<windowclass name="power_item_header" merge="join" ruleset="3.5E|PFRPG|SFRPG|2E">
+		<sheetdata>
+		<!-- Zarestia adding invsible string to update the casting time live -->
+			<invis_string_action name="updatecasting" source="castingtime" />
+			<invis_string_additional name="updatecomponents" source="components" />
+			<invis_string_additional name="updaterange" source="range" />
+
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
+				</anchored>
+			</list_poweraction_mini>
+
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="actioninfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
 				</anchored>
 			</label>
 
-		<!-- Zarestia editing ActionsMini -->
-			<windowlist name="actionsmini">
-				<anchored>
-					<top offset="2" />
-					<left parent="additional_info" anchor="right" relation="relative" offset="4" />
-					<right />
+		<!-- Zarestia adding label to display the components -->
+			<label name="additionalinfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="50">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
 				</anchored>
-			</windowlist>
+			</label>
+		</sheetdata>
+	</windowclass>
+
+	<!-- For closed NPC sheets -->
+	<windowclass name="power_item_header_mini" merge="join" ruleset="3.5E|PFRPG|SFRPG">
+		<sheetdata>
+		<!-- Zarestia adding invsible strings to update changes live -->
+			<invis_string_action name="updatecasting" source="castingtime" /> 
+			<invis_string_additional name="updatecomponents" source="components" />
+			<invis_string_additional name="updaterange" source="range" />
+			
+		<!-- Zarestia editing ActionsMini -->
+			<list_poweraction_mini name="actionsmini">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+					<left parent="additionalinfo" anchor="right" offset="5" />
+				</anchored>
+			</list_poweraction_mini>
+
+		<!-- Zarestia adding label to display the casting time -->
+			<label name="actioninfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_actioninfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="" anchor="center" offset="10" />
+				</anchored>
+			</label>
+
+		<!-- Zarestia adding label to display the components -->
+			<label name="additionalinfo" insertbefore="actionsmini">
+				<script file="campaign/scripts/show_additionalinfo.lua" />
+				<anchored to="rightanchor" width="65">
+					<top />
+					<left parent="actioninfo" anchor="right" relation="relative" offset="5" />
+				</anchored>
+			</label>
 		</sheetdata>
 	</windowclass>
 </root>
