@@ -6,31 +6,16 @@
 -->
 
 <root>
-	<windowclass name="spell_item_mini_header" merge="join">
+	<windowclass name="power_item_header_mini" merge="join">
 		<sheetdata>
 		<!-- Zarestia replacing data to change anchoring -->
-			<windowlist name="actions" merge="replace">
+			<list_poweraction_mini name="actions">
 				<anchored>
 					<top offset="2" />
 					<left parent="additional_info" anchor="right" offset="10" />
 					<right />
 				</anchored>
-				<datasource>.actions</datasource>
-				<class>spell_action_mini</class>
-				<noscroll />
-				<readonly />
-				<columns width="25" fillwidth="true" />
-			</windowlist>
-			
-			<simplestring name="name" merge="replace">
-				<anchored>
-					<top offset="2" />
-					<left parent="hanchor" anchor="right" relation="relative" offset="5" />
-					<right parent="action_info" anchor="left" offset="-10" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-				<readonly />
-			</simplestring>
+			</list_poweraction_mini>
 		
 		<!-- Zarestia adding invsible strings to update changes live -->
 			<invis_string_action name="updatecasting" source="castingtime" /> 
